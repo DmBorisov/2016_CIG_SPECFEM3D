@@ -1,1 +1,1 @@
-# 2016-CIG-specfem3d-workshop
+# 2016_CIG_SPECFEM3D
