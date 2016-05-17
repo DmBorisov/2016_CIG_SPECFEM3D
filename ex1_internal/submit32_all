@@ -1,0 +1,40 @@
+#!/bin/bash
+#SBATCH -N 2   # node count
+#SBATCH --ntasks-per-node=16
+#SBATCH -t 00:05:00
+
+echo
+echo "start: `date`"
+echo
+
+# script to run the mesher and the solver
+# read Par_file to get information about the run
+# compute total number of nodes needed
+NPROC=`grep NPROC DATA/Par_file | cut -d = -f 2`
+
+##-DATA-
+## run mesher
+#sed -e "s#^SIMULATION_TYPE.*#SIMULATION_TYPE                 = 1 #g" < DATA/Par_file > tmp
+#mv tmp DATA/Par_file
+#sed -e "s#^SAVE_FORWARD.*#SAVE_FORWARD                    = .true. #g" < DATA/Par_file > tmp
+#mv tmp DATA/Par_file
+
+echo starting MPI internal mesher-DAT on $NPROC processors
+sleep 2
+#cd bin
+mpiexec -n $NPROC ./bin/xmeshfem3D
+echo "done "
+echo " "
+
+# generate databases
+echo generating MPI databases-DAT on $NPROC processors
+mpiexec -n $NPROC ./bin/xgenerate_databases
+echo "done "
+echo " "
+
+# run specfem3D
+echo running solver in current directory $PWD
+mpiexec -n $NPROC ./bin/xspecfem3D
+echo "finished successfully"
+echo " "
+
