@@ -1,0 +1,12 @@
+# system output
+ex1_internal/slurm*
+ex2_external/slurm*
+
+# specfem output
+ex1_internal/OUTPUT_FILES
+ex2_external/OUTPUT_FILES
+
+
+# specfem binaries 
+ex1_internal/bin
+ex2_external/bin
