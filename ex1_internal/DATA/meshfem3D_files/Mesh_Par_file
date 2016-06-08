@@ -26,7 +26,7 @@ NEX_XI                          = 48  # 648
 NEX_ETA                         = 24  # 720
 
 # number of MPI processors along xi and eta (can be different)
-NPROC_XI                        = 8
+NPROC_XI                        = 4
 NPROC_ETA                       = 4
 
 #-----------------------------------------------------------
