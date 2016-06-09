@@ -1,5 +1,6 @@
 #!/bin/bash
-#SBATCH -N 2   # node count
+#SBATCH -p high
+#SBATCH -N 1   # node count
 #SBATCH --ntasks-per-node=16
 #SBATCH -t 00:05:00
 
@@ -10,7 +11,7 @@ echo
 # script to run the mesher and the solver
 # read Par_file to get information about the run
 # compute total number of nodes needed
-NPROC=`grep NPROC DATA/Par_file | cut -d = -f 2`
+#NPROC=`grep NPROC DATA/Par_file | cut -d = -f 2`
 
 ##-DATA-
 ## run mesher
@@ -22,19 +23,19 @@ NPROC=`grep NPROC DATA/Par_file | cut -d = -f 2`
 echo starting MPI internal mesher-DAT on $NPROC processors
 sleep 2
 #cd bin
-mpiexec -n $NPROC ./bin/xmeshfem3D
+mpiexec ./bin/xmeshfem3D
 echo "done "
 echo " "
 
 # generate databases
 echo generating MPI databases-DAT on $NPROC processors
-mpiexec -n $NPROC ./bin/xgenerate_databases
+mpiexec ./bin/xgenerate_databases
 echo "done "
 echo " "
 
 # run specfem3D
 echo running solver in current directory $PWD
-mpiexec -n $NPROC ./bin/xspecfem3D
+mpiexec ./bin/xspecfem3D
 echo "finished successfully"
 echo " "
 

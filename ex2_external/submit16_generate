@@ -1,5 +1,6 @@
 #!/bin/bash
-#SBATCH -N 2   # node count
+#SBATCH -p high
+#SBATCH -N 1   # node count
 #SBATCH --ntasks-per-node=16
 #SBATCH -t 00:05:00
 
@@ -7,4 +8,4 @@
 #module load intel/16.0/64/16.0.1.150
 
 # problems with mpiexec/mpirun so use srun
-mpiexec -n 32 ./bin/xspecfem3D
+mpiexec ./bin/xgenerate_databases
