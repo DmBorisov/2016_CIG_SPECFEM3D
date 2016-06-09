@@ -1,12 +1,19 @@
+#
+.DS_Store
+
 # system output
 ex1_internal/slurm*
 ex2_external/slurm*
 
 # specfem output
 ex1_internal/OUTPUT_FILES
+ex1_internal/OUTPUT_FILES/DATABASES_MPI
 ex2_external/OUTPUT_FILES
-
+ex2_external/OUTPUT_FILES/DATABASES_MPI
 
 # specfem binaries 
 ex1_internal/bin
 ex2_external/bin
+
+# instructions
+instructions
