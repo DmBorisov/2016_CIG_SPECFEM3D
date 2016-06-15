@@ -343,10 +343,8 @@ while(!feof(inf)){
     fscanf(inf,"%s",dumc); /* = */      
     for (i=0; i<nss; i++){  
       fscanf(inf,"%s",dumc);   
-      //if(dumc[0] != '\0'){ 
-      if(!strcmp(dumc,"")){ 
-        getfirstquote(dumc,ss_name[i]);
-      }else{
+      getfirstquote(dumc,ss_name[i]);
+      if(!strcmp(ss_name[i],"")){ 
         sprintf(ss_name[i],"unnamed_sideset%d",i);
       }
     }

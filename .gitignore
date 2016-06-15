@@ -15,6 +15,9 @@ ex2_external/OUTPUT_FILES/DATABASES_MPI
 ex1_internal/bin
 ex2_external/bin
 
+# test examples
+ex2_external_test
+
 # instructions
 instructions
 ppt
