@@ -1,0 +1,179 @@
+
+ ******************************************
+ *** Specfem3D MPI Mesher - f90 version ***
+ ******************************************
+
+ This is process            0
+ There are           16  MPI processes
+ Processes are numbered from 0 to           15
+
+ There is a total of           16  slices
+
+ NGLLX =            5
+ NGLLY =            5
+ NGLLZ =            5
+
+ Shape functions defined by NGNOD =            8  control nodes
+ Surface shape functions defined by NGNOD2D =            4  control nodes
+ Beware! Curvature (i.e. HEX27 elements) is not handled by our internal mesher
+
+ velocity model:   tomo
+
+
+ suppressing UTM projection
+
+ no attenuation
+
+ no anisotropy
+
+ no oceans
+
+ incorporating Stacey absorbing conditions
+
+ using a FORCESOLUTION source instead of a CMTSOLUTION source
+
+ using a Ricker source time function
+
+ **************************
+ creating mesh in the model
+ **************************
+
+ external mesh points :        18928
+ defined materials    :            1
+ undefined materials  :            0
+ total number of spectral elements:        13824
+ absorbing boundaries: 
+   xmin,xmax :          288         288
+   ymin,ymax :          576         576
+   bottom,top:         1152        1152
+ total number of C-PML elements in the global mesh:            0
+ number of MPI partition interfaces:           84
+
+   minimum memory used so far     :    3.00194645     MB per process
+   minimum total memory requested :    13.998970985412598      MB per process
+
+ create regions: 
+
+   ...allocating arrays 
+ File DATA/Par_file_faults not found: assume no faults
+   ...setting up jacobian 
+   ...indexing global points
+   ...preparing MPI interfaces 
+      total MPI interface points:        88788
+      total assembled MPI interface points:       85260
+   ...setting up absorbing boundaries 
+      absorbing boundary:
+      total number of free faces =         1152
+      total number of faces =         2880
+   ...determining velocity model
+
+      number of tomographic models       =            1
+      maximum number of data records     =       148225
+      size of required tomography arrays =    2.26173401     MB per process
+
+      material id:           -1
+      file       : ./DATA/tomo_files/tomography_model.xyz
+      data format: #x #y #z #vp #vs #density
+      number of grid points = NX*NY*NZ:      148225
+
+               10  % time remaining:   4.7806480313883348E-006 s
+               20  % time remaining:   4.2371621881281962E-006 s
+               30  % time remaining:   3.6929863844181732E-006 s
+               40  % time remaining:   3.1536753240107851E-006 s
+               50  % time remaining:   2.6267707138108443E-006 s
+               60  % time remaining:   2.1035791868476150E-006 s
+               70  % time remaining:   1.5796055694711209E-006 s
+               80  % time remaining:   1.0591051687039096E-006 s
+               90  % time remaining:   5.4108422565916914E-007 s
+              100  % time remaining:   2.3966156235591786E-008 s
+   ...detecting acoustic-elastic-poroelastic surfaces 
+      total acoustic elements   :           0
+      total elastic elements    :       13824
+      total poroelastic elements:           0
+   ...element inner/outer separation 
+      for overlapping of communications with calculations:
+      percentage of   edge elements    23.6111145     %
+      percentage of volume elements    76.3888855     %
+   ...element mesh coloring 
+      use coloring =  F
+   ...external binary models 
+      no external binary model used 
+   ...creating mass matrix 
+   ...saving databases
+      saving mesh files for AVS, OpenDX, Paraview
+   ...checking mesh resolution
+
+ ********
+ minimum and maximum number of elements
+ and points in the CUBIT + SCOTCH mesh:
+
+ NSPEC_global_min =          864
+ NSPEC_global_max =          864
+ NSPEC_global_max / NSPEC_global_min imbalance =    1.00000000      =    0.00000000      %
+ NSPEC_global_sum =        13824
+
+ NGLOB_global_min =        60025
+ NGLOB_global_max =        60025
+ NGLOB_global_max / NGLOB_global_min imbalance =    1.00000000      =    0.00000000      %
+ NGLOB_global_sum =       960400
+
+ If you have elements of a single type (all acoustic, all elastic, all poroelastic, and without CPML)
+ in the whole mesh, then there should be no significant imbalance in the above numbers.
+ Otherwise, it is normal to have imbalance in elements and points because the domain decomposer
+ compensates for the different cost of different elements by partitioning them unevenly among processes.
+ ********
+
+
+ ********
+ Model: P velocity min,max =    467.311981       1215.00000    
+ Model: S velocity min,max =    274.942200       715.000000    
+ ********
+
+ *********************************************
+ *** Verification of simulation parameters ***
+ *********************************************
+
+ *** Xmin and Xmax of the model =    0.00000000       192.000000    
+ *** Ymin and Ymax of the model =    0.00000000       96.0000000    
+ *** Zmin and Zmax of the model =   -60.0000000       0.00000000    
+
+ *** Max GLL point distance =    2.18217850    
+ *** Min GLL point distance =   0.690689087    
+ *** Max/min ratio =    3.15942240    
+
+ *** Max element size =    6.66666794    
+ *** Min element size =    4.00000000    
+ *** Max/min ratio =    1.66666698    
+
+ *** Minimum period resolved =    2.02062689E-02
+ *** Maximum suggested time step =    2.84234178E-04
+
+ Elapsed time for checking mesh resolution in seconds =    2.6891231536865234E-003
+ saving VTK files for Courant number and minimum period
+
+
+ min and max of topography included in mesh in m is   -0.0000000000000000         -0.0000000000000000     
+
+
+ Repartition of elements:
+ -----------------------
+
+ total number of elements in mesh slice 0:          864
+ total number of points in mesh slice 0:        60025
+
+ total number of elements in entire mesh:        13824
+ approximate total number of points in entire mesh (with duplicates on MPI edges):    960400.00000000000     
+ approximate total number of DOFs in entire mesh (with duplicates on MPI edges):    2881200.0000000000     
+
+ total number of time steps in the solver will be:         2001
+
+ using single precision for the calculations
+
+ smallest and largest possible floating-point numbers are:    1.17549435E-38   3.40282347E+38
+
+
+ Elapsed time for mesh generation and buffer creation in seconds =    12.752043008804321     
+ End of mesh generation
+
+ done
+
