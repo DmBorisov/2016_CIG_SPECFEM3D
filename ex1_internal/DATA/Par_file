@@ -19,7 +19,7 @@ NPROC                           = 16
 
 # time step parameters
 NSTEP                           = 2001
-DT                              = 0.0003
+DT                              = 0.003
 USE_LDDRK                       = .false.
 INCREASE_CFL_FOR_LDDRK          = .false.
 RATIO_BY_WHICH_TO_INCREASE_IT   = 1.4
