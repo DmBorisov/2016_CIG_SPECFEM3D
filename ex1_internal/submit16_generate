@@ -3,12 +3,4 @@
 #SBATCH -N 1   # node count
 #SBATCH --ntasks-per-node=16
 #SBATCH -t 00:01:00
-# sends mail when process begins, and
-# when it ends. Make sure you define your email
-# address.
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-user=dborisov@princeton.edu
-#cd /scratch/network/dborisov/specfem3d
-#cd /home/dborisov/packages/specfem3d
 mpiexec ./bin/xgenerate_databases
