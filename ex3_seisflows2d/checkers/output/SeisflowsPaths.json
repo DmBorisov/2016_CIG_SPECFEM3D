@@ -1,0 +1,19 @@
+{
+    "DATA": "", 
+    "FUNC": "/home/dborisov/tests/checkers/scratch/evalfunc", 
+    "GRAD": "/home/dborisov/tests/checkers/scratch/evalgrad", 
+    "HESS": "/home/dborisov/tests/checkers/scratch/evalhess", 
+    "LOCAL": "", 
+    "MASK": null, 
+    "MODEL_INIT": "/home/dborisov/tests/checkers/model_init", 
+    "MODEL_TRUE": "/home/dborisov/tests/checkers/model_true", 
+    "OPTIMIZE": "/home/dborisov/tests/checkers/scratch/optimize", 
+    "OUTPUT": "/home/dborisov/tests/checkers/output", 
+    "PRECOND": "", 
+    "SCRATCH": "/home/dborisov/tests/checkers/scratch", 
+    "SOLVER": "/home/dborisov/tests/checkers/scratch/solver", 
+    "SPECFEM_BIN": "/home/dborisov/packages/specfem2d-d745c542/bin", 
+    "SPECFEM_DATA": "/home/dborisov/tests/checkers/specfem2d-d745c542/DATA", 
+    "SUBMIT": "/home/dborisov/tests/checkers", 
+    "SYSTEM": "/home/dborisov/tests/checkers/scratch/system"
+}
