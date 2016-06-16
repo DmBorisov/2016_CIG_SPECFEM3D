@@ -1,0 +1,1901 @@
+
+ **********************************************
+ **** Specfem 3-D Solver - MPI version f90 ****
+ **********************************************
+
+
+ Fixing slow underflow trapping problem using small initial field
+
+ There are           16  MPI processes
+ Processes are numbered from 0 to           15
+
+ There is a total of           16  slices
+
+  NDIM =            3
+
+  NGLLX =            5
+  NGLLY =            5
+  NGLLZ =            5
+
+ using single precision for the calculations
+
+ smallest and largest possible floating-point numbers are:    1.17549435E-38   3.40282347E+38
+
+ velocity model:   default 
+
+ total acoustic elements    :           0
+ total elastic elements     :       15457
+ total poroelastic elements :           0
+
+ ********
+ minimum and maximum number of elements
+ and points in the CUBIT + SCOTCH mesh:
+
+ NSPEC_global_min =          918
+ NSPEC_global_max =         1014
+ NSPEC_global_max / NSPEC_global_min imbalance =    1.10457516      =    10.4575167      %
+ NSPEC_global_sum =        15457
+
+ NGLOB_global_min =        63609
+ NGLOB_global_max =        70897
+ NGLOB_global_max / NGLOB_global_min imbalance =    1.11457503      =    11.4574986      %
+ NGLOB_global_sum =      1072720
+
+ If you have elements of a single type (all acoustic, all elastic, all poroelastic, and without CPML)
+ in the whole mesh, then there should be no significant imbalance in the above numbers.
+ Otherwise, it is normal to have imbalance in elements and points because the domain decomposer
+ compensates for the different cost of different elements by partitioning them unevenly among processes.
+ ********
+
+
+ ********
+ Model: P velocity min,max =    2999.99976       3200.00000    
+ Model: S velocity min,max =    1731.99988       1830.00000    
+ ********
+
+ *********************************************
+ *** Verification of simulation parameters ***
+ *********************************************
+
+ *** Xmin and Xmax of the model =   -265.000000       275.000000    
+ *** Ymin and Ymax of the model =   -210.000000       190.000000    
+ *** Zmin and Zmax of the model =   -300.000000       310.500854    
+
+ *** Max GLL point distance =    9.79603767    
+ *** Min GLL point distance =   0.714817822    
+ *** Max/min ratio =    13.7042437    
+
+ *** Max element size =    30.0425091    
+ *** Min element size =    4.13972235    
+ *** Max/min ratio =    7.25713158    
+
+ *** Minimum period resolved =    2.16819514E-02
+ *** Maximum suggested time step =    1.19136312E-04
+
+ *** for DT :    4.0000000000000003E-005
+ *** Max stability for wave velocities =   0.167874932    
+
+ Elapsed time for checking mesh resolution in seconds =    2.5770664215087891E-003
+ saving VTK files for Courant number and minimum period
+
+ ******************************************
+ There is a total of           16  slices
+ ******************************************
+
+ movie surface:
+   nfaces_surface_ext_mesh:          97
+   nfaces_perproc_surface_ext_mesh:          97         112         120          98           0           0           0           0           0           0           0           0           0         120           0         120
+   nfaces_surface_glob_ext_mesh:         667
+
+ sources:
+ no UTM projection
+
+ *************************************
+  locating source            1
+ *************************************
+
+ source located in slice           15
+                in element          533
+                in elastic domain
+
+ using force point source: 
+   xi coordinate of source in that element:   0.22275701792231212     
+   eta coordinate of source in that element:  -0.66007444533152559     
+   gamma coordinate of source in that element:  -0.64123900539731238     
+
+   component of direction vector in East direction:    0.0000000000000000     
+   component of direction vector in North direction:    0.0000000000000000     
+   component of direction vector in Vertical direction:    1.0000000000000000     
+
+   nu1 =    1.0000000000000000        0.0000000000000000        0.0000000000000000     
+   nu2 =    0.0000000000000000        1.0000000000000000        0.0000000000000000     
+   nu3 =    0.0000000000000000        0.0000000000000000        1.0000000000000000     
+
+   at (x,y,z) coordinates =    100.00000000000001        100.00000000000003        95.630081176757841     
+   using a source of dominant frequency    24.000000000000000     
+   lambda_S at dominant frequency =    72.168782552083329     
+   lambda_S at highest significant frequency =    28.867513020833332     
+   t0_ricker =    4.9999999999999996E-002
+   time shift =    0.0000000000000000     
+
+   half duration -> frequency:    24.000000000000000       seconds**(-1)
+   time shift:    0.0000000000000000       seconds
+
+ original (requested) position of the source:
+
+           latitude:    100.00000000000000     
+          longitude:    100.00000000000000     
+
+              x:    100.00000000000000     
+              y:    100.00000000000000     
+          depth:    0.0000000000000000       km
+ topo elevation:    95.630081176757812     
+
+ position of the source that will be used:
+
+              x:    100.00000000000001     
+              y:    100.00000000000003     
+          depth:    2.8421709430404008E-017  km
+              z:    95.630081176757841     
+
+ error in location of the source:    4.26325641E-14  m
+
+ maximum error in location of the sources:    4.26325641E-14  m
+
+
+ Elapsed time for detection of sources in seconds =    1.1007070541381836E-002
+
+ End of source detection - done
+
+
+ Each source is being convolved with HDUR_MOVIE =    0.0000000000000000     
+
+
+ receivers:
+
+ there are           72  stations in file ./DATA/STATIONS
+ saving           72  stations inside the model in file ./DATA/STATIONS_FILTERED
+ excluding            0  stations located outside the model
+
+
+ Total number of receivers =           72
+
+
+ ********************
+  locating receivers
+ ********************
+
+ reading receiver information from ./DATA/STATIONS_FILTERED file
+
+ Station #           1 : DB.X1    horizontal distance:     6.77913800E-02  km
+ Station #           2 : DB.X2    horizontal distance:     6.70750216E-02  km
+ Station #           3 : DB.X3    horizontal distance:     6.64728805E-02  km
+ Station #           4 : DB.X4    horizontal distance:     6.57726973E-02  km
+ Station #           5 : DB.X5    horizontal distance:     6.50809780E-02  km
+ Station #           6 : DB.X6    horizontal distance:     6.45042807E-02  km
+ Station #           7 : DB.X7    horizontal distance:     6.38226122E-02  km
+ Station #           8 : DB.X8    horizontal distance:     6.31578267E-02  km
+ Station #           9 : DB.X9    horizontal distance:     6.25088364E-02  km
+ Station #          10 : DB.X10    horizontal distance:     6.19634055E-02  km
+ Station #          11 : DB.X11    horizontal distance:     6.13281950E-02  km
+ Station #          12 : DB.X12    horizontal distance:     6.07093945E-02  km
+ Station #          13 : DB.X13    horizontal distance:     6.01953715E-02  km
+ Station #          14 : DB.X14    horizontal distance:     5.95842712E-02  km
+ Station #          15 : DB.X15    horizontal distance:     5.89983724E-02  km
+ Station #          16 : DB.X16    horizontal distance:     5.84186055E-02  km
+ Station #          17 : DB.X17    horizontal distance:     5.79507016E-02  km
+ Station #          18 : DB.X18    horizontal distance:     5.74007444E-02  km
+ Station #          19 : DB.X19    horizontal distance:     5.68532459E-02  km
+ Station #          20 : DB.X20    horizontal distance:     5.64283878E-02  km
+ Station #          21 : DB.X21    horizontal distance:     5.59126548E-02  km
+ Station #          22 : DB.X22    horizontal distance:     5.54109067E-02  km
+ Station #          23 : DB.X23    horizontal distance:     5.49191460E-02  km
+ Station #          24 : DB.X24    horizontal distance:     5.45445122E-02  km
+ Station #          25 : DB.X25    horizontal distance:     5.40864728E-02  km
+ Station #          26 : DB.X26    horizontal distance:     5.36480099E-02  km
+ Station #          27 : DB.X27    horizontal distance:     5.32211848E-02  km
+ Station #          28 : DB.X28    horizontal distance:     5.29073253E-02  km
+ Station #          29 : DB.X29    horizontal distance:     5.25165349E-02  km
+ Station #          30 : DB.X30    horizontal distance:     5.21295667E-02  km
+ Station #          31 : DB.X31    horizontal distance:     5.18644787E-02  km
+ Station #          32 : DB.X32    horizontal distance:     5.15244119E-02  km
+ Station #          33 : DB.X33    horizontal distance:     5.11991046E-02  km
+ Station #          34 : DB.X34    horizontal distance:     5.08949086E-02  km
+ Station #          35 : DB.X35    horizontal distance:     5.06991521E-02  km
+ Station #          36 : DB.X36    horizontal distance:     5.04290238E-02  km
+ Station #          37 : DB.X37    horizontal distance:     5.01706004E-02  km
+ Station #          38 : DB.X38    horizontal distance:     5.00294268E-02  km
+ Station #          39 : DB.X39    horizontal distance:     4.98169139E-02  km
+ Station #          40 : DB.X40    horizontal distance:     4.96260673E-02  km
+ Station #          41 : DB.X41    horizontal distance:     4.94537242E-02  km
+ Station #          42 : DB.X42    horizontal distance:     4.93885055E-02  km
+ Station #          43 : DB.X43    horizontal distance:     4.92573343E-02  km
+ Station #          44 : DB.X44    horizontal distance:     4.91358154E-02  km
+ Station #          45 : DB.X45    horizontal distance:     4.91286479E-02  km
+ Station #          46 : DB.X46    horizontal distance:     4.90579791E-02  km
+ Station #          47 : DB.X47    horizontal distance:     4.90086377E-02  km
+ Station #          48 : DB.X48    horizontal distance:     4.89801019E-02  km
+ Station #          49 : DB.X49    horizontal distance:     4.90514562E-02  km
+ Station #          50 : DB.X50    horizontal distance:     4.90636863E-02  km
+ Station #          51 : DB.X51    horizontal distance:     4.90873531E-02  km
+ Station #          52 : DB.X52    horizontal distance:     4.91413362E-02  km
+ Station #          53 : DB.X53    horizontal distance:     4.92904112E-02  km
+ Station #          54 : DB.X54    horizontal distance:     4.93856929E-02  km
+ Station #          55 : DB.X55    horizontal distance:     4.95003872E-02  km
+ Station #          56 : DB.X56    horizontal distance:     4.97061871E-02  km
+ Station #          57 : DB.X57    horizontal distance:     4.98618670E-02  km
+ Station #          58 : DB.X58    horizontal distance:     5.00260554E-02  km
+ Station #          59 : DB.X59    horizontal distance:     5.02339751E-02  km
+ Station #          60 : DB.X60    horizontal distance:     5.05132414E-02  km
+ Station #          61 : DB.X61    horizontal distance:     5.07447273E-02  km
+ Station #          62 : DB.X62    horizontal distance:     5.09883314E-02  km
+ Station #          63 : DB.X63    horizontal distance:     5.13194613E-02  km
+ Station #          64 : DB.X64    horizontal distance:     5.16058765E-02  km
+ Station #          65 : DB.X65    horizontal distance:     5.19136637E-02  km
+ Station #          66 : DB.X66    horizontal distance:     5.22360988E-02  km
+ Station #          67 : DB.X67    horizontal distance:     5.26323766E-02  km
+ Station #          68 : DB.X68    horizontal distance:     5.29917739E-02  km
+ Station #          69 : DB.X69    horizontal distance:     5.33551127E-02  km
+ Station #          70 : DB.X70    horizontal distance:     5.37965372E-02  km
+ Station #          71 : DB.X71    horizontal distance:     5.42044975E-02  km
+ Station #          72 : DB.X72    horizontal distance:     5.46240546E-02  km
+
+ station #            1     DB    X1
+      original latitude:    51.0600014    
+      original longitude:    146.910004    
+      original x:    146.910004    
+      original y:    51.0600014    
+      original depth:    0.00000000      m
+      horizontal distance:    6.77913800E-02
+      target x, y, z:    146.910004       51.0600014       57.7720947    
+      closest estimate found:    3.17764376E-14  m away
+      in slice           15  in element          797
+      at coordinates: 
+      xi    =  -0.85293725325955694     
+      eta   =  -0.98019894241708982     
+      gamma =   0.33123759341665565     
+      x:    146.91000000000003     
+      y:    51.060000000000002     
+      depth:    1.4210854715202004E-014  m
+      z:    57.772094726562514     
+
+
+
+ station #            2     DB    X2
+      original latitude:    51.0800018    
+      original longitude:    145.889999    
+      original x:    145.889999    
+      original y:    51.0800018    
+      original depth:    0.00000000      m
+      horizontal distance:    6.70750216E-02
+      target x, y, z:    145.889999       51.0800018       57.7106323    
+      closest estimate found:    3.55271368E-14  m away
+      in slice           15  in element          797
+      at coordinates: 
+      xi    =  -0.94353820195977645     
+      eta   =  -0.92992066795011308     
+      gamma =   0.33116918430355319     
+      x:    145.88999999999996     
+      y:    51.079999999999977     
+      depth:    0.0000000000000000       m
+      z:    57.710632324218750     
+
+
+
+ station #            3     DB    X3
+      original latitude:    51.0200005    
+      original longitude:    144.940002    
+      original x:    144.940002    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    6.64728805E-02
+      target x, y, z:    144.940002       51.0200005       58.8604317    
+      closest estimate found:    2.92964268E-14  m away
+      in slice           15  in element          797
+      at coordinates: 
+      xi    =   -1.0925411556187408     
+      eta   =   -1.0521546592847217     
+      gamma =   0.31703619252194543     
+      x:    144.94000000000003     
+      y:    51.019999999999996     
+      depth:    0.0000000000000000       m
+      z:    58.860431671142578     
+
+
+
+ station #            4     DB    X4
+      original latitude:    51.0400009    
+      original longitude:    143.919998    
+      original x:    143.919998    
+      original y:    51.0400009    
+      original depth:    0.00000000      m
+      horizontal distance:    6.57726973E-02
+      target x, y, z:    143.919998       51.0400009       58.7986145    
+      closest estimate found:    1.58882188E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.81536720757841996     
+      eta   =   -1.0079499956689195     
+      gamma =   0.31643970955796397     
+      x:    143.91999999999999     
+      y:    51.040000000000013     
+      depth:    7.1054273576010019E-015  m
+      z:    58.798614501953132     
+
+
+
+ station #            5     DB    X5
+      original latitude:    51.0600014    
+      original longitude:    142.899994    
+      original x:    142.899994    
+      original y:    51.0600014    
+      original depth:    0.00000000      m
+      horizontal distance:    6.50809780E-02
+      target x, y, z:    142.899994       51.0600014       58.7349968    
+      closest estimate found:    5.85928536E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.72413971879881422     
+      eta   =  -0.96027110863363718     
+      gamma =   0.31615392734909947     
+      x:    142.90000000000006     
+      y:    51.060000000000002     
+      depth:    1.4210854715202004E-014  m
+      z:    58.734996795654311     
+
+
+
+ station #            6     DB    X6
+      original latitude:    51.0000000    
+      original longitude:    141.949997    
+      original x:    141.949997    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    6.45042807E-02
+      target x, y, z:    141.949997       51.0000000       58.7160187    
+      closest estimate found:    2.92964268E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.63506487230067088     
+      eta   =  -0.92660824805745834     
+      gamma =   0.30723062042108573     
+      x:    141.94999999999996     
+      y:    51.000000000000000     
+      depth:    7.1054273576010019E-015  m
+      z:    58.716018676757820     
+
+
+
+ station #            7     DB    X7
+      original latitude:    51.0299988    
+      original longitude:    140.929993    
+      original x:    140.929993    
+      original y:    51.0299988    
+      original depth:    0.00000000      m
+      horizontal distance:    6.38226122E-02
+      target x, y, z:    140.929993       51.0299988       60.3702240    
+      closest estimate found:   0.113922261      m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.45425507557859712     
+      eta   =   -1.1000000000000001     
+      gamma =   0.29953522248744840     
+      x:    140.87495327683058     
+      y:    51.026754399758374     
+      depth:    9.9687542470299206E-002  m
+      z:    60.270536456553138     
+
+
+
+ station #            8     DB    X8
+      original latitude:    51.0499992    
+      original longitude:    139.910004    
+      original x:    139.910004    
+      original y:    51.0499992    
+      original depth:    0.00000000      m
+      horizontal distance:    6.31578267E-02
+      target x, y, z:    139.910004       51.0499992       60.2413559    
+      closest estimate found:    7.10542736E-15  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.36643923414662888     
+      eta   =   -1.0588024213199869     
+      gamma =   0.29959925498910916     
+      x:    139.91000000000000     
+      y:    51.050000000000004     
+      depth:    0.0000000000000000       m
+      z:    60.241355895996094     
+
+
+
+ station #            9     DB    X9
+      original latitude:    51.0699997    
+      original longitude:    138.899994    
+      original x:    138.899994    
+      original y:    51.0699997    
+      original depth:    0.00000000      m
+      horizontal distance:    6.25088364E-02
+      target x, y, z:    138.899994       51.0699997       60.1002159    
+      closest estimate found:    1.00485916E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.28019362137066989     
+      eta   =   -1.0005600496216838     
+      gamma =   0.29978069733788526     
+      x:    138.90000000000001     
+      y:    51.069999999999993     
+      depth:    7.1054273576010019E-015  m
+      z:    60.100215911865227     
+
+
+
+ station #           10     DB    X10
+      original latitude:    51.0099983    
+      original longitude:    137.940002    
+      original x:    137.940002    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    6.19634055E-02
+      target x, y, z:    137.940002       51.0099983       59.9935570    
+      closest estimate found:    5.90221096E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.19476775278863290     
+      eta   =  -0.95423921094990360     
+      gamma =   0.29131855799828649     
+      x:    137.94000000000005     
+      y:    51.010000000000005     
+      depth:    1.4210854715202004E-014  m
+      z:    59.993556976318374     
+
+
+
+ station #           11     DB    X11
+      original latitude:    51.0299988    
+      original longitude:    136.919998    
+      original x:    136.919998    
+      original y:    51.0299988    
+      original depth:    0.00000000      m
+      horizontal distance:    6.13281950E-02
+      target x, y, z:    136.919998       51.0299988       59.8865433    
+      closest estimate found:    3.25611594E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   0.10580023321907844     
+      eta   =  -0.90015303625154941     
+      gamma =   0.29135466929033832     
+      x:    136.91999999999996     
+      y:    51.029999999999994     
+      depth:    1.4210854715202004E-014  m
+      z:    59.886543273925795     
+
+
+
+ station #           12     DB    X12
+      original latitude:    51.0499992    
+      original longitude:    135.910004    
+      original x:    135.910004    
+      original y:    51.0499992    
+      original depth:    0.00000000      m
+      horizontal distance:    6.07093945E-02
+      target x, y, z:    135.910004       51.0499992       62.2548523    
+      closest estimate found:   0.658557892      m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.11162968170666630     
+      eta   =   -1.1000000000000001     
+      gamma =   0.27863663200521316     
+      x:    135.59220535301287     
+      y:    51.029908288124211     
+      depth:   0.57645590208677078       m
+      z:    61.678396392835104     
+
+
+
+ station #           13     DB    X13
+      original latitude:    50.9900017    
+      original longitude:    134.949997    
+      original x:    134.949997    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    6.01953715E-02
+      target x, y, z:    134.949997       50.9900017       62.1941414    
+      closest estimate found:   0.368329078      m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.19945785436329075     
+      eta   =   -1.1000000000000001     
+      gamma =   0.26995126021688726     
+      x:    134.77229112128779     
+      y:    50.978656931369777     
+      depth:   0.32242395125255996       m
+      z:    61.871717436686893     
+
+
+
+ station #           14     DB    X14
+      original latitude:    51.0200005    
+      original longitude:    133.929993    
+      original x:    133.929993    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    5.95842712E-02
+      target x, y, z:    133.929993       51.0200005       62.0670700    
+      closest estimate found:    2.92964268E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.28712212921942770     
+      eta   =   -1.0931612740381582     
+      gamma =   0.27118142384758420     
+      x:    133.93000000000004     
+      y:    51.019999999999996     
+      depth:    0.0000000000000000       m
+      z:    62.067070007324219     
+
+
+
+ station #           15     DB    X15
+      original latitude:    51.0400009    
+      original longitude:    132.919998    
+      original x:    132.919998    
+      original y:    51.0400009    
+      original depth:    0.00000000      m
+      horizontal distance:    5.89983724E-02
+      target x, y, z:    132.919998       51.0400009       61.9265900    
+      closest estimate found:    4.01943663E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.37341202304804211     
+      eta   =   -1.0346169319405849     
+      gamma =   0.27145969303740242     
+      x:    132.92000000000002     
+      y:    51.039999999999999     
+      depth:    2.8421709430404007E-014  m
+      z:    61.926589965820341     
+
+
+
+ station #           16     DB    X16
+      original latitude:    51.0600014    
+      original longitude:    131.899994    
+      original x:    131.899994    
+      original y:    51.0600014    
+      original depth:    0.00000000      m
+      horizontal distance:    5.84186055E-02
+      target x, y, z:    131.899994       51.0600014       61.7907028    
+      closest estimate found:    2.00971831E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.46087801312668664     
+      eta   =  -0.97623207961234681     
+      gamma =   0.27171736150276854     
+      x:    131.90000000000001     
+      y:    51.059999999999988     
+      depth:    1.4210854715202004E-014  m
+      z:    61.790702819824233     
+
+
+
+ station #           17     DB    X17
+      original latitude:    51.0000000    
+      original longitude:    130.940002    
+      original x:    130.940002    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.79507016E-02
+      target x, y, z:    130.940002       51.0000000       63.4836960    
+      closest estimate found:   0.588337719      m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.64033980462887508     
+      eta   =   -1.1000000000000001     
+      gamma =   0.25369282970653062     
+      x:    130.65645899075506     
+      y:    50.980949946441640     
+      depth:   0.51515324206361157       m
+      z:    62.968542741823107     
+
+
+
+ station #           18     DB    X18
+      original latitude:    51.0200005    
+      original longitude:    129.929993    
+      original x:    129.929993    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    5.74007444E-02
+      target x, y, z:    129.929993       51.0200005       63.4909248    
+      closest estimate found:   0.313740462      m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.73434956515375827     
+      eta   =   -1.1000000000000001     
+      gamma =   0.25320422700342166     
+      x:    129.77883604800886     
+      y:    51.009730136439018     
+      depth:   0.27473089235083847       m
+      z:    63.216193942854240     
+
+
+
+ station #           19     DB    X19
+      original latitude:    51.0400009    
+      original longitude:    128.899994    
+      original x:    128.899994    
+      original y:    51.0400009    
+      original depth:    0.00000000      m
+      horizontal distance:    5.68532459E-02
+      target x, y, z:    128.899994       51.0400009       63.4531860    
+      closest estimate found:    5.90221096E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.82787778444993887     
+      eta   =   -1.0983564867804703     
+      gamma =   0.25293162535064984     
+      x:    128.89999999999995     
+      y:    51.039999999999985     
+      depth:    7.1054273576010019E-015  m
+      z:    63.453186035156257     
+
+
+
+ station #           20     DB    X20
+      original latitude:    50.9799995    
+      original longitude:    127.949997    
+      original x:    127.949997    
+      original y:    50.9799995    
+      original depth:    0.00000000      m
+      horizontal distance:    5.64283878E-02
+      target x, y, z:    127.949997       50.9799995       63.4175606    
+      closest estimate found:    2.92964268E-14  m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =  -0.91609498392972710     
+      eta   =   -1.0619119482042125     
+      gamma =   0.24424968429148428     
+      x:    127.95000000000002     
+      y:    50.980000000000018     
+      depth:    1.4210854715202004E-014  m
+      z:    63.417560577392592     
+
+
+
+ station #           21     DB    X21
+      original latitude:    51.0000000    
+      original longitude:    126.930000    
+      original x:    126.930000    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.59126548E-02
+      target x, y, z:    126.930000       51.0000000       64.5032349    
+      closest estimate found:   0.540103674      m away
+      in slice           15  in element          798
+      at coordinates: 
+      xi    =   -1.0673611514147405     
+      eta   =   -1.1000000000000001     
+      gamma =   0.23781466616244298     
+      x:    126.67000103212578     
+      y:    50.981679503482198     
+      depth:   0.47305059814399897       m
+      z:    64.030184265137251     
+
+
+
+ station #           22     DB    X22
+      original latitude:    51.0200005    
+      original longitude:    125.910004    
+      original x:    125.910004    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    5.54109067E-02
+      target x, y, z:    125.910004       51.0200005       64.4776611    
+      closest estimate found:   0.221023858      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.84487901143994359     
+      eta   =   -1.1000000000000001     
+      gamma =   0.23643635343285602     
+      x:    125.80400205863783     
+      y:    51.012235246141444     
+      depth:   0.19379291427021883       m
+      z:    64.283868218542281     
+
+
+
+ station #           23     DB    X23
+      original latitude:    51.0499992    
+      original longitude:    124.900002    
+      original x:    124.900002    
+      original y:    51.0499992    
+      original depth:    0.00000000      m
+      horizontal distance:    5.49191460E-02
+      target x, y, z:    124.900002       51.0499992       64.4065628    
+      closest estimate found:    2.92964268E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.75816326857224525     
+      eta   =   -1.0801221987673171     
+      gamma =   0.23697231171235097     
+      x:    124.90000000000003     
+      y:    51.050000000000004     
+      depth:    0.0000000000000000       m
+      z:    64.406562805175781     
+
+
+
+ station #           24     DB    X24
+      original latitude:    50.9900017    
+      original longitude:    123.940002    
+      original x:    123.940002    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    5.45445122E-02
+      target x, y, z:    123.940002       50.9900017       64.3518295    
+      closest estimate found:    2.00971831E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.67280803207119344     
+      eta   =   -1.0398267460426813     
+      gamma =   0.22790476543364485     
+      x:    123.94000000000001     
+      y:    50.990000000000002     
+      depth:    1.4210854715202004E-014  m
+      z:    64.351829528808580     
+
+
+
+ station #           25     DB    X25
+      original latitude:    51.0099983    
+      original longitude:    122.919998    
+      original x:    122.919998    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    5.40864728E-02
+      target x, y, z:    122.919998       51.0099983       64.2624741    
+      closest estimate found:    2.13162821E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.58569663529615590     
+      eta   =  -0.98677998351892149     
+      gamma =   0.22756068510995056     
+      x:    122.91999999999999     
+      y:    51.009999999999991     
+      depth:    1.4210854715202004E-014  m
+      z:    64.262474060058580     
+
+
+
+ station #           26     DB    X26
+      original latitude:    51.0299988    
+      original longitude:    121.910004    
+      original x:    121.910004    
+      original y:    51.0299988    
+      original depth:    0.00000000      m
+      horizontal distance:    5.36480099E-02
+      target x, y, z:    121.910004       51.0299988       66.0040283    
+      closest estimate found:   0.661375821      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.40803997769237821     
+      eta   =   -1.1000000000000001     
+      gamma =   0.21566016298853619     
+      x:    121.59630453961694     
+      y:    51.004107983906152     
+      depth:   0.58167234048499949       m
+      z:    65.422355979827501     
+
+
+
+ station #           27     DB    X27
+      original latitude:    51.0499992    
+      original longitude:    120.889999    
+      original x:    120.889999    
+      original y:    51.0499992    
+      original depth:    0.00000000      m
+      horizontal distance:    5.32211848E-02
+      target x, y, z:    120.889999       51.0499992       65.8626938    
+      closest estimate found:   0.228679731      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.32348597391228834     
+      eta   =   -1.1000000000000001     
+      gamma =   0.21566246517650378     
+      x:    120.78177289551883     
+      y:    51.040863534151704     
+      depth:   0.20124074033452644       m
+      z:    65.661453046286567     
+
+
+
+ station #           28     DB    X28
+      original latitude:    50.9900017    
+      original longitude:    119.930000    
+      original x:    119.930000    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    5.29073253E-02
+      target x, y, z:    119.930000       50.9900017       65.7386627    
+      closest estimate found:    1.42108547E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.24134604044479191     
+      eta   =   -1.0817857576977274     
+      gamma =   0.20716833908224547     
+      x:    119.93000000000002     
+      y:    50.990000000000002     
+      depth:    0.0000000000000000       m
+      z:    65.738662719726562     
+
+
+
+ station #           29     DB    X29
+      original latitude:    51.0099983    
+      original longitude:    118.919998    
+      original x:    118.919998    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    5.25165349E-02
+      target x, y, z:    118.919998       51.0099983       65.5988541    
+      closest estimate found:    3.48093441E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   0.15744625015736524     
+      eta   =   -1.0218037289049469     
+      gamma =   0.20732239341937314     
+      x:    118.91999999999997     
+      y:    51.009999999999984     
+      depth:    1.4210854715202004E-014  m
+      z:    65.598854064941392     
+
+
+
+ station #           30     DB    X30
+      original latitude:    51.0400009    
+      original longitude:    117.900002    
+      original x:    117.900002    
+      original y:    51.0400009    
+      original depth:    0.00000000      m
+      horizontal distance:    5.21295667E-02
+      target x, y, z:    117.900002       51.0400009       65.4781189    
+      closest estimate found:    3.17764376E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =    7.1872269627214061E-002
+      eta   =  -0.96333680503153707     
+      gamma =   0.20846839870505998     
+      x:    117.90000000000003     
+      y:    51.040000000000013     
+      depth:    0.0000000000000000       m
+      z:    65.478118896484375     
+
+
+
+ station #           31     DB    X31
+      original latitude:    50.9799995    
+      original longitude:    116.940002    
+      original x:    116.940002    
+      original y:    50.9799995    
+      original depth:    0.00000000      m
+      horizontal distance:    5.18644787E-02
+      target x, y, z:    116.940002       50.9799995       68.0687714    
+      closest estimate found:    1.41334093      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.14461013498028880     
+      eta   =   -1.1000000000000001     
+      gamma =   0.18161403666277279     
+      x:    116.27874024204974     
+      y:    50.917664101018310     
+      depth:    1.2475505755060112       m
+      z:    66.821220786798676     
+
+
+
+ station #           32     DB    X32
+      original latitude:    51.0000000    
+      original longitude:    115.930000    
+      original x:    115.930000    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.15244119E-02
+      target x, y, z:    115.930000       51.0000000       67.9829254    
+      closest estimate found:    1.03952706      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.23123979777929096     
+      eta   =   -1.1000000000000001     
+      gamma =   0.18142602756775347     
+      x:    115.44472865894600     
+      y:    50.953300367680967     
+      depth:   0.91812166300537967       m
+      z:    67.064803752033683     
+
+
+
+ station #           33     DB    X33
+      original latitude:    51.0200005    
+      original longitude:    114.910004    
+      original x:    114.910004    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    5.11991046E-02
+      target x, y, z:    114.910004       51.0200005       67.8481827    
+      closest estimate found:   0.613301039      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.31644700377364682     
+      eta   =   -1.1000000000000001     
+      gamma =   0.18161622972587005     
+      x:    114.62433722722565     
+      y:    50.991951463193402     
+      depth:   0.54198547898455729       m
+      z:    67.306197199238099     
+
+
+
+ station #           34     DB    X34
+      original latitude:    51.0400009    
+      original longitude:    113.900002    
+      original x:    113.900002    
+      original y:    51.0400009    
+      original depth:    0.00000000      m
+      horizontal distance:    5.08949086E-02
+      target x, y, z:    113.900002       51.0400009       67.6991348    
+      closest estimate found:   0.175166458      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.40012788144998723     
+      eta   =   -1.1000000000000001     
+      gamma =   0.18200461383614064     
+      x:    113.81859103897197     
+      y:    51.031849122249007     
+      depth:   0.15488522563333618       m
+      z:    67.544249601026820     
+
+
+
+ station #           35     DB    X35
+      original latitude:    50.9799995    
+      original longitude:    112.940002    
+      original x:    112.940002    
+      original y:    50.9799995    
+      original depth:    0.00000000      m
+      horizontal distance:    5.06991521E-02
+      target x, y, z:    112.940002       50.9799995       67.5796356    
+      closest estimate found:    5.12379649E-14  m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.48296511035308365     
+      eta   =   -1.0748198134929101     
+      gamma =   0.17376611473355730     
+      x:    112.93999999999997     
+      y:    50.979999999999997     
+      depth:    4.2632564145606011E-014  m
+      z:    67.579635620117145     
+
+
+
+ station #           36     DB    X36
+      original latitude:    51.0000000    
+      original longitude:    111.919998    
+      original x:    111.919998    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.04290238E-02
+      target x, y, z:    111.919998       51.0000000       69.4127960    
+      closest estimate found:    1.38985550      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.66462011359070061     
+      eta   =   -1.1000000000000001     
+      gamma =   0.15977246398927361     
+      x:    111.27807191368970     
+      y:    50.932175022175784     
+      depth:    1.2308640404962574       m
+      z:    68.181931980011555     
+
+
+
+ station #           37     DB    X37
+      original latitude:    51.0299988    
+      original longitude:    110.910004    
+      original x:    110.910004    
+      original y:    51.0299988    
+      original depth:    0.00000000      m
+      horizontal distance:    5.01706004E-02
+      target x, y, z:    110.910004       51.0299988       69.4716644    
+      closest estimate found:    1.15753305      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.75827814100820534     
+      eta   =   -1.1000000000000001     
+      gamma =   0.15976916466060467     
+      x:    110.37668820975284     
+      y:    50.972486302897721     
+      depth:    1.0257453380569785       m
+      z:    68.445919090653959     
+
+
+
+ station #           38     DB    X38
+      original latitude:    50.9700012    
+      original longitude:    109.949997    
+      original x:    109.949997    
+      original y:    50.9700012    
+      original depth:    0.00000000      m
+      horizontal distance:    5.00294268E-02
+      target x, y, z:    109.949997       50.9700012       69.4822998    
+      closest estimate found:   0.935743153      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.84760244706202026     
+      eta   =   -1.1000000000000001     
+      gamma =   0.15062288175489186     
+      x:    109.51973662425659     
+      y:    50.922816000485781     
+      depth:   0.82961581342927104       m
+      z:    68.652683991258229     
+
+
+
+ station #           39     DB    X39
+      original latitude:    50.9900017    
+      original longitude:    108.930000    
+      original x:    108.930000    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    4.98169139E-02
+      target x, y, z:    108.930000       50.9900017       69.4057083    
+      closest estimate found:   0.568177164      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =  -0.93597455255280226     
+      eta   =   -1.1000000000000001     
+      gamma =   0.15062770877707377     
+      x:    108.66935434125506     
+      y:    50.960875313948847     
+      depth:   0.50402467077792323       m
+      z:    68.901683642210358     
+
+
+
+ station #           40     DB    X40
+      original latitude:    51.0099983    
+      original longitude:    107.919998    
+      original x:    107.919998    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    4.96260673E-02
+      target x, y, z:    107.919998       51.0099983       69.2930527    
+      closest estimate found:   0.166589722      m away
+      in slice           15  in element          799
+      at coordinates: 
+      xi    =   -1.0217590833006482     
+      eta   =   -1.1000000000000001     
+      gamma =   0.15099557081257609     
+      x:    107.84375307183332     
+      y:    51.001324548080838     
+      depth:   0.14786236622184390       m
+      z:    69.145190307118000     
+
+
+
+ station #           41     DB    X41
+      original latitude:    51.0299988    
+      original longitude:    106.900002    
+      original x:    106.900002    
+      original y:    51.0299988    
+      original depth:    0.00000000      m
+      horizontal distance:    4.94537242E-02
+      target x, y, z:    106.900002       51.0299988       70.5716019    
+      closest estimate found:    1.08185351      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.82497968199587157     
+      eta   =   -1.1000000000000001     
+      gamma =   0.14335260171042694     
+      x:    106.40693765672380     
+      y:    50.972857036836352     
+      depth:   0.96126546987565575       m
+      z:    69.610336397800125     
+
+
+
+ station #           42     DB    X42
+      original latitude:    50.9700012    
+      original longitude:    105.940002    
+      original x:    105.940002    
+      original y:    50.9700012    
+      original depth:    0.00000000      m
+      horizontal distance:    4.93885055E-02
+      target x, y, z:    105.940002       50.9700012       70.5280075    
+      closest estimate found:   0.759463191      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.73853383697860775     
+      eta   =   -1.1000000000000001     
+      gamma =   0.13604449402879010     
+      x:    105.59464928328707     
+      y:    50.929557112892553     
+      depth:   0.67519007341140025       m
+      z:    69.852817433912819     
+
+
+
+ station #           43     DB    X43
+      original latitude:    50.9900017    
+      original longitude:    104.930000    
+      original x:    104.930000    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    4.92573343E-02
+      target x, y, z:    104.930000       50.9900017       70.4141464    
+      closest estimate found:   0.311365485      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.65304399393244317     
+      eta   =   -1.1000000000000001     
+      gamma =   0.13780798249895665     
+      x:    104.78877730758985     
+      y:    50.973255266420850     
+      depth:   0.27699139422311703       m
+      z:    70.137155029116727     
+
+
+
+ station #           44     DB    X44
+      original latitude:    51.0200005    
+      original longitude:    103.910004    
+      original x:    103.910004    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    4.91358154E-02
+      target x, y, z:    103.910004       51.0200005       70.2644043    
+      closest estimate found:    3.17764376E-14  m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.56852023317647460     
+      eta   =   -1.0747342467017309     
+      gamma =   0.14094630886161827     
+      x:    103.90999999999997     
+      y:    51.020000000000003     
+      depth:    1.4210854715202004E-014  m
+      z:    70.264404296875014     
+
+
+
+ station #           45     DB    X45
+      original latitude:    50.9599991    
+      original longitude:    102.949997    
+      original x:    102.949997    
+      original y:    50.9599991    
+      original depth:    0.00000000      m
+      horizontal distance:    4.91286479E-02
+      target x, y, z:    102.949997       50.9599991       72.1861343    
+      closest estimate found:    1.44420362      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.38841120674549146     
+      eta   =   -1.1000000000000001     
+      gamma =   0.11945983374768175     
+      x:    102.29964242480931     
+      y:    50.880321682052553     
+      depth:    1.2870161479619213       m
+      z:    70.899118190416985     
+
+
+
+ station #           46     DB    X46
+      original latitude:    50.9799995    
+      original longitude:    101.930000    
+      original x:    101.930000    
+      original y:    50.9799995    
+      original depth:    0.00000000      m
+      horizontal distance:    4.90579791E-02
+      target x, y, z:    101.930000       50.9799995       72.0232391    
+      closest estimate found:   0.944348514      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.30422366319549177     
+      eta   =   -1.1000000000000001     
+      gamma =   0.12161082353371645     
+      x:    101.50582374130795     
+      y:    50.927410385204034     
+      depth:   0.84208251761045005       m
+      z:    71.181156618131737     
+
+
+
+ station #           47     DB    X47
+      original latitude:    51.0000000    
+      original longitude:    100.919998    
+      original x:    100.919998    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    4.90086377E-02
+      target x, y, z:    100.919998       51.0000000       71.8544769    
+      closest estimate found:   0.441752672      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.22110013873688200     
+      eta   =   -1.1000000000000001     
+      gamma =   0.12387195971825282     
+      x:    100.72207570456921     
+      y:    50.975174873367273     
+      depth:   0.39415112958110399       m
+      z:    71.460325799129834     
+
+
+
+ station #           48     DB    X48
+      original latitude:    51.0200005    
+      original longitude:    99.9000015    
+      original x:    99.9000015    
+      original y:    51.0200005    
+      original depth:    0.00000000      m
+      horizontal distance:    4.89801019E-02
+      target x, y, z:    99.9000015       51.0200005       71.6954575    
+      closest estimate found:    0.00000000      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =   0.13648889590589641     
+      eta   =   -1.0924471289208013     
+      gamma =   0.12610491419724101     
+      x:    99.900000000000006     
+      y:    51.020000000000003     
+      depth:    0.0000000000000000       m
+      z:    71.695457458496094     
+
+
+
+ station #           49     DB    X49
+      original latitude:    50.9599991    
+      original longitude:    98.9400024    
+      original x:    98.9400024    
+      original y:    50.9599991    
+      original depth:    0.00000000      m
+      horizontal distance:    4.90514562E-02
+      target x, y, z:    98.9400024       50.9599991       71.5816422    
+      closest estimate found:    2.13162821E-14  m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =    5.3010403588814321E-002
+      eta   =   -1.0383897417186674     
+      gamma =   0.11941120190210698     
+      x:    98.939999999999984     
+      y:    50.959999999999994     
+      depth:    1.4210854715202004E-014  m
+      z:    71.581642150878892     
+
+
+
+ station #           50     DB    X50
+      original latitude:    50.9799995    
+      original longitude:    97.9300003    
+      original x:    97.9300003    
+      original y:    50.9799995    
+      original depth:    0.00000000      m
+      horizontal distance:    4.90636863E-02
+      target x, y, z:    97.9300003       50.9799995       74.4484100    
+      closest estimate found:    2.06238222      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.17248816448523954     
+      eta   =   -1.1000000000000001     
+      gamma =    9.8716820995071897E-002
+      x:    97.016048329013501     
+      y:    50.859678813928340     
+      depth:    1.8448945160488108       m
+      z:    72.603515518130877     
+
+
+
+ station #           51     DB    X51
+      original latitude:    51.0099983    
+      original longitude:    96.9100037    
+      original x:    96.9100037    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    4.90873531E-02
+      target x, y, z:    96.9100037       51.0099983       74.3337479    
+      closest estimate found:    1.60508120      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.25895367805170844     
+      eta   =   -1.1000000000000001     
+      gamma =   0.10170602817238970     
+      x:    96.200575528577787     
+      y:    50.915516324676403     
+      depth:    1.4366890801839673       m
+      z:    72.897058783585564     
+
+
+
+ station #           52     DB    X52
+      original latitude:    51.0299988    
+      original longitude:    95.9000015    
+      original x:    95.9000015    
+      original y:    51.0299988    
+      original depth:    0.00000000      m
+      horizontal distance:    4.91413362E-02
+      target x, y, z:    95.9000015       51.0299988       74.1732101    
+      closest estimate found:    1.11047578      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.34274857870395342     
+      eta   =   -1.1000000000000001     
+      gamma =   0.10402379972885993     
+      x:    95.410426069391022     
+      y:    50.964075468657718     
+      depth:   0.99454904379950904       m
+      z:    73.178661100243460     
+
+
+
+ station #           53     DB    X53
+      original latitude:    50.9700012    
+      original longitude:    94.9400024    
+      original x:    94.9400024    
+      original y:    50.9700012    
+      original depth:    0.00000000      m
+      horizontal distance:    4.92904112E-02
+      target x, y, z:    94.9400024       50.9700012       74.0276413    
+      closest estimate found:   0.688313842      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.42481570167199989     
+      eta   =   -1.1000000000000001     
+      gamma =    9.7564780140376728E-002
+      x:    94.637241875249558     
+      y:    50.928828836969473     
+      depth:   0.61678065342364619       m
+      z:    73.410860642963073     
+
+
+
+ station #           54     DB    X54
+      original latitude:    50.9900017    
+      original longitude:    93.9199982    
+      original x:    93.9199982    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    4.93856929E-02
+      target x, y, z:    93.9199982       50.9900017       73.8683777    
+      closest estimate found:   0.191552386      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.50979166667259090     
+      eta   =   -1.1000000000000001     
+      gamma =    9.9955159889834083E-002
+      x:    93.835960555886842     
+      y:    50.978445930791821     
+      depth:   0.17174455834236824       m
+      z:    73.696633127204507     
+
+
+
+ station #           55     DB    X55
+      original latitude:    51.0099983    
+      original longitude:    92.9100037    
+      original x:    92.9100037    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    4.95003872E-02
+      target x, y, z:    92.9100037       51.0099983       75.9503403    
+      closest estimate found:    1.92428792      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.69712063923550915     
+      eta   =   -1.1000000000000001     
+      gamma =    8.4511874320857369E-002
+      x:    92.070232348227620     
+      y:    50.891936766097132     
+      depth:    1.7273492472130840       m
+      z:    74.222991023783010     
+
+
+
+ station #           56     DB    X56
+      original latitude:    50.9500008    
+      original longitude:    91.9499969    
+      original x:    91.9499969    
+      original y:    50.9500008    
+      original depth:    0.00000000      m
+      horizontal distance:    4.97061871E-02
+      target x, y, z:    91.9499969       50.9500008       76.0752029    
+      closest estimate found:    1.77142024      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.79162886492574391     
+      eta   =   -1.1000000000000001     
+      gamma =    7.5855044548561373E-002
+      x:    91.179028929308799     
+      y:    50.840378915262413     
+      depth:    1.5910739937092444       m
+      z:    74.484128948185287     
+
+
+
+ station #           57     DB    X57
+      original latitude:    50.9700012    
+      original longitude:    90.9300003    
+      original x:    90.9300003    
+      original y:    50.9700012    
+      original depth:    0.00000000      m
+      horizontal distance:    4.98618670E-02
+      target x, y, z:    90.9300003       50.9700012       76.0399857    
+      closest estimate found:    1.39802313      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.88236880001936435     
+      eta   =   -1.1000000000000001     
+      gamma =    7.7268610705890833E-002
+      x:    90.323201728123991     
+      y:    50.882742860048879     
+      depth:    1.2564436371534384       m
+      z:    74.783542019584843     
+
+
+
+ station #           58     DB    X58
+      original latitude:    51.0000000    
+      original longitude:    89.9199982    
+      original x:    89.9199982    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.00260554E-02
+      target x, y, z:    89.9199982       51.0000000       75.9463959    
+      closest estimate found:   0.964358270      m away
+      in slice           15  in element          800
+      at coordinates: 
+      xi    =  -0.96939080607538719     
+      eta   =   -1.1000000000000001     
+      gamma =    8.0320744453657181E-002
+      x:    89.502529848431834     
+      y:    50.939319545926402     
+      depth:   0.86719286500722603       m
+      z:    75.079203009016211     
+
+
+
+ station #           59     DB    X59
+      original latitude:    51.0099983    
+      original longitude:    88.8899994    
+      original x:    88.8899994    
+      original y:    51.0099983    
+      original depth:    0.00000000      m
+      horizontal distance:    5.02339751E-02
+      target x, y, z:    88.8899994       51.0099983       77.1796951    
+      closest estimate found:    1.83816910      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.87998746224951752     
+      eta   =   -1.1000000000000001     
+      gamma =    7.3271382263923740E-002
+      x:    88.095579604274690     
+      y:    50.894007955001094     
+      depth:    1.6535742386682699       m
+      z:    75.526120890726261     
+
+
+
+ station #           60     DB    X60
+      original latitude:    50.9500008    
+      original longitude:    87.9300003    
+      original x:    87.9300003    
+      original y:    50.9500008    
+      original depth:    0.00000000      m
+      horizontal distance:    5.05132414E-02
+      target x, y, z:    87.9300003       50.9500008       77.1923218    
+      closest estimate found:    1.56179905      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.78981885493286474     
+      eta   =   -1.1000000000000001     
+      gamma =    6.7851785777793466E-002
+      x:    87.255398902926061     
+      y:    50.851446730792020     
+      depth:    1.4051394100447112       m
+      z:    75.787182367299039     
+
+
+
+ station #           61     DB    X61
+      original latitude:    50.9700012    
+      original longitude:    86.9199982    
+      original x:    86.9199982    
+      original y:    50.9700012    
+      original depth:    0.00000000      m
+      horizontal distance:    5.07447273E-02
+      target x, y, z:    86.9199982       50.9700012       77.1047516    
+      closest estimate found:    1.12753034      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.70155856744597189     
+      eta   =   -1.1000000000000001     
+      gamma =    7.2004353185802242E-002
+      x:    86.433289410666234     
+      y:    50.898834814534908     
+      depth:    1.0145802502297130       m
+      z:    76.090171336684350     
+
+
+
+ station #           62     DB    X62
+      original latitude:    51.0000000    
+      original longitude:    85.9000015    
+      original x:    85.9000015    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.09883314E-02
+      target x, y, z:    85.9000015       51.0000000       76.9848404    
+      closest estimate found:   0.652716219      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.61407338533194589     
+      eta   =   -1.1000000000000001     
+      gamma =    7.7498693888397141E-002
+      x:    85.618431525095033     
+      y:    50.958792501925586     
+      depth:   0.58741771581669866       m
+      z:    76.397422677249708     
+
+
+
+ station #           63     DB    X63
+      original latitude:    50.9399986    
+      original longitude:    84.9400024    
+      original x:    84.9400024    
+      original y:    50.9399986    
+      original depth:    0.00000000      m
+      horizontal distance:    5.13194613E-02
+      target x, y, z:    84.9400024       50.9399986       76.8329086    
+      closest estimate found:   0.213803753      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.53136745141854957     
+      eta   =   -1.1000000000000001     
+      gamma =    7.3245030089182595E-002
+      x:    84.847816989733403     
+      y:    50.926501945972007     
+      depth:   0.19243737249946946       m
+      z:    76.640471257871624     
+
+
+
+ station #           64     DB    X64
+      original latitude:    50.9599991    
+      original longitude:    83.9300003    
+      original x:    83.9300003    
+      original y:    50.9599991    
+      original depth:    0.00000000      m
+      horizontal distance:    5.16058765E-02
+      target x, y, z:    83.9300003       50.9599991       78.6447296    
+      closest estimate found:    1.65639460      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.35629651454537770     
+      eta   =   -1.1000000000000001     
+      gamma =    6.3954366796638837E-002
+      x:    83.216606493902702     
+      y:    50.855429902110451     
+      depth:    1.4912336212234436       m
+      z:    77.153495993034369     
+
+
+
+ station #           65     DB    X65
+      original latitude:    50.9799995    
+      original longitude:    82.9100037    
+      original x:    82.9100037    
+      original y:    50.9799995    
+      original depth:    0.00000000      m
+      horizontal distance:    5.19136637E-02
+      target x, y, z:    82.9100037       50.9799995       78.4738159    
+      closest estimate found:    1.13650930      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.27086208733542594     
+      eta   =   -1.1000000000000001     
+      gamma =    6.8708529194874288E-002
+      x:    82.420822309092671     
+      y:    50.908232830884749     
+      depth:    1.0233318117730903       m
+      z:    77.450484106195660     
+
+
+
+ station #           66     DB    X66
+      original latitude:    51.0000000    
+      original longitude:    81.9000015    
+      original x:    81.9000015    
+      original y:    51.0000000    
+      original depth:    0.00000000      m
+      horizontal distance:    5.22360988E-02
+      target x, y, z:    81.9000015       51.0000000       78.3096542    
+      closest estimate found:   0.626662195      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.18600844332053143     
+      eta   =   -1.1000000000000001     
+      gamma =    7.3402129078749670E-002
+      x:    81.630438658836994     
+      y:    50.960417821809820     
+      depth:   0.56433628941799441       m
+      z:    77.745317946421849     
+
+
+
+ station #           67     DB    X67
+      original latitude:    50.9399986    
+      original longitude:    80.9400024    
+      original x:    80.9400024    
+      original y:    50.9399986    
+      original depth:    0.00000000      m
+      horizontal distance:    5.26323766E-02
+      target x, y, z:    80.9400024       50.9399986       78.1835403    
+      closest estimate found:   0.213324726      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =   0.10206182610020184     
+      eta   =   -1.1000000000000001     
+      gamma =    6.8968185938539595E-002
+      x:    80.848284620826519     
+      y:    50.926526095236099     
+      depth:   0.19213063017681975       m
+      z:    77.991409714061462     
+
+
+
+ station #           68     DB    X68
+      original latitude:    50.9599991    
+      original longitude:    79.9199982    
+      original x:    79.9199982    
+      original y:    50.9599991    
+      original depth:    0.00000000      m
+      horizontal distance:    5.29917739E-02
+      target x, y, z:    79.9199982       50.9599991       78.0551300    
+      closest estimate found:    2.84217094E-14  m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =    1.4605237968413164E-002
+      eta   =   -1.0649251157760788     
+      gamma =    7.3422664450521258E-002
+      x:    79.920000000000002     
+      y:    50.960000000000001     
+      depth:    2.8421709430404007E-014  m
+      z:    78.055130004882841     
+
+
+
+ station #           69     DB    X69
+      original latitude:    50.9900017    
+      original longitude:    78.9100037    
+      original x:    78.9100037    
+      original y:    50.9900017    
+      original depth:    0.00000000      m
+      horizontal distance:    5.33551127E-02
+      target x, y, z:    78.9100037       50.9900017       80.8920212    
+      closest estimate found:    2.18523574      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =  -0.20662813980936878     
+      eta   =   -1.1000000000000001     
+      gamma =    5.7983487514102303E-002
+      x:    77.972308106440281     
+      y:    50.851979965491957     
+      depth:    1.9689945898591787       m
+      z:    78.923026589340040     
+
+
+
+ station #           70     DB    X70
+      original latitude:    50.9300003    
+      original longitude:    77.9499969    
+      original x:    77.9499969    
+      original y:    50.9300003    
+      original depth:    0.00000000      m
+      horizontal distance:    5.37965372E-02
+      target x, y, z:    77.9499969       50.9300003       80.7651825    
+      closest estimate found:    1.77119112      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =  -0.29055616672683565     
+      eta   =   -1.1000000000000001     
+      gamma =    5.3558093238477794E-002
+      x:    77.190359596871730     
+      y:    50.818140254829387     
+      depth:    1.5961051512850588       m
+      z:    79.169077343832129     
+
+
+
+ station #           71     DB    X71
+      original latitude:    50.9500008    
+      original longitude:    76.9300003    
+      original x:    76.9300003    
+      original y:    50.9500008    
+      original depth:    0.00000000      m
+      horizontal distance:    5.42044975E-02
+      target x, y, z:    76.9300003       50.9500008       80.5948563    
+      closest estimate found:    1.25200808      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =  -0.37611826475104271     
+      eta   =   -1.1000000000000001     
+      gamma =    5.8305089447820528E-002
+      x:    76.393362726468553     
+      y:    50.870906931321251     
+      depth:    1.1284010088355245       m
+      z:    79.466455253371507     
+
+
+
+ station #           72     DB    X72
+      original latitude:    50.9700012    
+      original longitude:    75.9199982    
+      original x:    75.9199982    
+      original y:    50.9700012    
+      original depth:    0.00000000      m
+      horizontal distance:    5.46240546E-02
+      target x, y, z:    75.9199982       50.9700012       80.4303894    
+      closest estimate found:   0.741976678      m away
+      in slice           15  in element          801
+      at coordinates: 
+      xi    =  -0.46105649276071881     
+      eta   =   -1.1000000000000001     
+      gamma =    6.2998109900305702E-002
+      x:    75.602168250068033     
+      y:    50.923113426591669     
+      depth:   0.66881540450653176       m
+      z:    79.761573999790343     
+
+
+ maximum error in location of all the receivers:    2.18523574      m
+
+ Elapsed time for receiver detection in seconds =    2.3626089096069336E-002
+
+ End of receiver detection - done
+
+
+ Total number of samples for seismograms =         2001
+
+ found a total of           72  receivers in all the slices
+
+
+ no attenuation
+
+ no anisotropy
+
+ no oceans
+
+ no gravity
+
+ no acoustic simulation
+
+ incorporating elastic simulation
+
+ no poroelastic simulation
+
+ incorporating movie simulation
+
+
+ no dynamic faults
+ no kinematic faults
+
+ no gravity simulation
+
+
+ Elapsed time for preparing timerun in seconds =    4.8449039459228516E-003
+
+ time loop:
+               scheme:         Newmark
+
+            time step:    3.99999990E-05  s
+ number of time steps:         2001
+ total simulated time:    8.00400004E-02  seconds
+ start time:  -5.00000007E-02  seconds
+
+ All processes are synchronized before time loop
+
+ Starting time iteration loop...
+
+ Time step #            5
+ Time:   -4.98399995E-02  seconds
+ Elapsed time in seconds =   0.15238714218139648     
+ Elapsed time in hh:mm:ss =      0 h 00 m 00 s
+ Mean elapsed time per time step in seconds =    3.04774288E-02
+ Max norm displacement vector U in all slices (m) =    5.24610559E-19
+ Time steps done =            5  out of         2001
+ Time steps remaining =         1996
+ Estimated remaining time in seconds =    60.8329468    
+ Estimated remaining time in hh:mm:ss =      0 h 01 m 00 s
+ Estimated total run time in seconds =    60.9853325    
+ Estimated total run time in hh:mm:ss =      0 h 01 m 00 s
+ We have done   0.249875069     % of that
+ The run will finish approximately on (in local time): Thu Jun 16, 2016 00:25
+ ************************************************************
+ **** BEWARE: the above time estimates are not reliable
+ **** because fewer than 100 iterations have been performed
+ ************************************************************
+
+ Time step #          500
+ Time:   -3.00399996E-02  seconds
+ Elapsed time in seconds =    19.846355199813843     
+ Elapsed time in hh:mm:ss =      0 h 00 m 19 s
+ Mean elapsed time per time step in seconds =    3.96927111E-02
+ Max norm displacement vector U in all slices (m) =    2.19120159E-13
+ Time steps done =          500  out of         2001
+ Time steps remaining =         1501
+ Estimated remaining time in seconds =    59.5787582    
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 59 s
+ Estimated total run time in seconds =    79.4251099    
+ Estimated total run time in hh:mm:ss =      0 h 01 m 19 s
+ We have done    24.9875069     % of that
+ The run will finish approximately on (in local time): Thu Jun 16, 2016 00:25
+
+ Time step #         1000
+ Time:   -1.00400001E-02  seconds
+ Elapsed time in seconds =    40.178287029266357     
+ Elapsed time in hh:mm:ss =      0 h 00 m 40 s
+ Mean elapsed time per time step in seconds =    4.01782878E-02
+ Max norm displacement vector U in all slices (m) =    1.92714139E-12
+ Time steps done =         1000  out of         2001
+ Time steps remaining =         1001
+ Estimated remaining time in seconds =    40.2184639    
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 40 s
+ Estimated total run time in seconds =    80.3967514    
+ Estimated total run time in hh:mm:ss =      0 h 01 m 20 s
+ We have done    49.9750137     % of that
+ The run will finish approximately on (in local time): Thu Jun 16, 2016 00:25
+
+ Time step #         1500
+ Time:    9.96000040E-03  seconds
+ Elapsed time in seconds =    61.568669080734253     
+ Elapsed time in hh:mm:ss =      0 h 01 m 01 s
+ Mean elapsed time per time step in seconds =    4.10457812E-02
+ Max norm displacement vector U in all slices (m) =    1.75982113E-12
+ Time steps done =         1500  out of         2001
+ Time steps remaining =          501
+ Estimated remaining time in seconds =    20.5639362    
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 20 s
+ Estimated total run time in seconds =    82.1326065    
+ Estimated total run time in hh:mm:ss =      0 h 01 m 22 s
+ We have done    74.9625168     % of that
+ The run will finish approximately on (in local time): Thu Jun 16, 2016 00:25
+
+ Time step #         2000
+ Time:    2.99600009E-02  seconds
+ Elapsed time in seconds =    81.073233127593994     
+ Elapsed time in hh:mm:ss =      0 h 01 m 21 s
+ Mean elapsed time per time step in seconds =    4.05366160E-02
+ Max norm displacement vector U in all slices (m) =    6.37989065E-13
+ Time steps done =         2000  out of         2001
+ Time steps remaining =            1
+ Estimated remaining time in seconds =    4.05366160E-02
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 00 s
+ Estimated total run time in seconds =    81.1137695    
+ Estimated total run time in hh:mm:ss =      0 h 01 m 21 s
+ We have done    99.9500275     % of that
+ The run will finish approximately on (in local time): Thu Jun 16, 2016 00:25
+
+ Time step #         2001
+ Time:    2.99999993E-02  seconds
+ Elapsed time in seconds =    81.113403081893921     
+ Elapsed time in hh:mm:ss =      0 h 01 m 21 s
+ Mean elapsed time per time step in seconds =    4.05364335E-02
+ Max norm displacement vector U in all slices (m) =    6.31835892E-13
+ Time steps done =         2001  out of         2001
+ Time steps remaining =            0
+ Estimated remaining time in seconds =    0.00000000    
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 00 s
+ Estimated total run time in seconds =    81.1134033    
+ Estimated total run time in hh:mm:ss =      0 h 01 m 21 s
+ We have done    100.000000     % of that
+
+ Time-Loop Complete. Timing info:
+ Total elapsed time in seconds =    81.148675203323364     
+ Total elapsed time in hh:mm:ss =      0 h 01 m 21 s
+
+ End of the simulation
+
